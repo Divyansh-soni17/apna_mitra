@@ -1,57 +1,68 @@
-#chatbot{
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    margin-top: 50px;
-    border-radius: 10px;
-    border: 1px solid gray;
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.botText{
-    font-family: monospace;
-    font-size: 14px;
-    text-align: left;
-    line-height: 25px;
-    color: rgb( 109, 111, 109);
+#userInput {
+  display: flex;
+  justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  padding: 0.5vmax;
+  
+  background-color: white;
 }
 
-#userInput{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    width: 70%;
-    text-align: center;
+#textInput {
+  padding: 0.4vmax;
+  background-color: rgba(173, 173, 173, 0.429);
+  color: black;
+  border-radius: 15px;
+  border: none;
+  margin-right: 0.3vmax;
+  width: 80%;
+  padding: 10px;
 }
 
-#textInput{
-    border: 3px solid white;
-    border-bottom: 3px solid rgb(185, 185, 185);
-    font-family: 14px;
-    width: 60%;
-    padding: 16px;
-    color: rgb(rgb(190, 75, 75), green, blue)
-
+input:focus,
+input:focus {
+  outline: none;
 }
 
-#buttonInput{
-    padding: 5px;
-    font-family: monospace;
-    font-size: 14px;
-    border: 3px solid #5b605c;
-    background-color: rgb(40, 48, 48);
-    color: white;
-    border-radius: 10px;
+#buttonInput {
+  border-radius: 20px;
+  padding: 0.3vmax;
+  background-color: rgb(115, 115, 200);
 }
 
-h1{
-    text-align: center;
-    color: rgb(57, 72, 57)
+.chatcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 37%;
+  background-color: rgba(175, 165, 165, 0.7);
+  border-radius: 20px;
+  padding-bottom: 0.2vmax;
 }
 
-.userText{
-    text-align: right;
-    font-family: monospace;
-    font-size: 14px;
-    line-height: 25px;
-    color: rgb( 109, 111, 109);
+.userText {
+  background-color: rgb(98, 98, 202);
+  color: white;
+  padding: 0.5vmax;
+  width: 40%;
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: 0.4vmax;
+}
+
+.botText {
+  background-color: rgb(98, 98, 202);
+  color: white;
+  padding: 0.5vmax;
+  width: 40%;
+  border-radius: 30px;
+  margin-right: auto;
+  margin-left: 0.4vmax;
 }
