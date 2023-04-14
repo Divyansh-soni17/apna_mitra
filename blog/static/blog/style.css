@@ -1,17 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.backimg::before {
+  content: " ";
+  background-image: url("https://www.theindiaforum.in/sites/default/files/field/image/2022/06/21/ramkumar-radhakrishnan-wikimedia-1622193304-1622193304.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
 .maincontainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  opacity: 1;
+  position: relative;
+}
+
+#maindata {
+  opacity: 0;
+}
+
+.openchatbot {
+  border-radius: 20px;
+  border: none;
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  z-index: 10;
+}
+.botbutton {
+  padding: 1vmax;
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(74, 74, 214, 0.834);
 }
 
 #userInput {
   display: flex;
   justify-content: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+  border-radius: 20px;
   padding: 0.5vmax;
-  
+  width: 37%;
   background-color: white;
 }
 
@@ -33,8 +74,10 @@ input:focus {
 
 #buttonInput {
   border-radius: 20px;
+  border: none;
   padding: 0.3vmax;
   background-color: rgb(115, 115, 200);
+  transition: all 0.3s;
 }
 
 .chatcontainer {
@@ -45,17 +88,23 @@ input:focus {
   background-color: rgba(175, 165, 165, 0.7);
   border-radius: 20px;
   padding-bottom: 0.2vmax;
+  padding-top: 1.3vmax;
+  height: 70vh;
+  overflow-y: auto;
 }
 
 .userText {
   background-color: rgb(98, 98, 202);
   color: white;
   padding: 0.5vmax;
+
   width: 40%;
   border-radius: 30px;
   margin-left: auto;
   margin-right: 0.4vmax;
 }
+
+ 
 
 .botText {
   background-color: rgb(98, 98, 202);
@@ -65,4 +114,10 @@ input:focus {
   border-radius: 30px;
   margin-right: auto;
   margin-left: 0.4vmax;
+}
+
+#buttonInput:hover {
+  cursor: pointer;
+  background-color: rgba(115, 115, 200, 0.479);
+  transform: translateY(-2px);
 }
