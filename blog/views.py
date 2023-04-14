@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key = os.getenv("OPENAI_KEY", None)
+print(api_key)
 
 def index(request):
     return render(request, 'blog/index.html')
@@ -15,8 +16,7 @@ def specific(request):
 
 def getResponse(request):
     chatResponse = None
-    print(api_key)
-    if api_key is not None and request == 'POST':
+    if api_key is not None:
         openai.api_key=api_key
         userMessage = request.GET.get('userMessage')
         prompt = userMessage
@@ -25,9 +25,9 @@ def getResponse(request):
             engine='text-davinci-003',
             prompt=prompt,
             max_tokens = 256,
-            temperature =0.5
+            temperature =0.3
         )
-    return HttpResponse(chatResponse)
+    return HttpResponse(chatResponse["choices"][0]["text"])
 
 
 

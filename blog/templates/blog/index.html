@@ -49,9 +49,7 @@
         $("#textInput").val("");
         $("#chatbot").append(userHTML);
 
-        $.get("/blog/getResponse", { userMessage: userText }).done(function (
-          data
-        ) {
+        $.get("/blog/getResponse", { userMessage:userText }).done(function(data){
           var returnedMessage =
             "<p class ='botText'>Chatbot:" + data + "</span></p>";
           $("#chatbot").append(returnedMessage);
