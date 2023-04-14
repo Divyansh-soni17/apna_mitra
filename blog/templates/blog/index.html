@@ -12,6 +12,16 @@
       type="text/css"
       href="{% static 'blog/style.css' %}"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <script
       src="https://code.jquery.com/jquery-3.6.4.js"
@@ -20,15 +30,17 @@
     ></script>
   </head>
   <body>
-    <div class="maincontainer">
-      <h1>Apna Mitra</h1>
-      <div class="chatcontainer">
-        <div id="chatbot">
-          <div>
-            <p class="botText"><span>Hi There</span></p>
+    <div class="backimg">
+      <!-- <iframe src="https://embed.lottiefiles.com/animation/136591"></iframe> -->
+      <div class="maincontainer" id="maindata">
+        <h1>Apna Mitra</h1>
+        <div class="chatcontainer">
+          <div id="chatbot">
+            <div>
+              <p class="botText"><span>Hi There</span></p>
+            </div>
           </div>
         </div>
-
         <div id="userInput">
           <input
             type="text"
@@ -38,6 +50,13 @@
           />
           <input type="submit" value="Send" id="buttonInput" />
         </div>
+      </div>
+      <div class="openchatbot">
+        <i
+          class="fa-duotone fa-message-bot fa-beat fa-sm"
+          style="--fa-primary-color: #d3366d; --fa-secondary-color: #6ebc20"
+        ></i>
+        <button class="botbutton" onclick="clickme()">Chatbot</button>
       </div>
     </div>
 
@@ -59,6 +78,13 @@
       $("#buttonInput").click(function () {
         getUserResponse();
       });
+
+      function clickme() {
+        var myDiv = document.getElementById("maindata");
+        gsap.to(myDiv, { opacity: 1, x: 50, duration: 1.5 });
+      }
     </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   </body>
 </html>
