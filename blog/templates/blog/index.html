@@ -109,11 +109,6 @@
     </div>
 
     <script>
-        var i = 1;
-        while(i == 1){
-          $.post("/texttospeech", {Message: "Namaste, main apki kya sahayata krr skti hoon"},function(status){})
-          i = 0;
-        }
       function getUserResponse() {
         var userText = $("#textInput").val();
         var userHTML =
@@ -151,9 +146,12 @@
       }
 
       var isContentVisible = false;
-
+      var i = 1;
       function toggle() {
-        console.log("hello");
+        while(i == 1){
+          $.post("/texttospeech", {Message: "Namaste, main apki kya sahayata krr skti hoon"},function(status){})
+          i = 0;
+        }
         var content = document.getElementById("maindata");
         var infodata = document.getElementById("maininfo");
         if (isContentVisible) {
@@ -170,7 +168,7 @@
       function getbotResponse(data) {
         const loading = $("#loading");
         loading.show();
-        $.get("/blog/getResponse", { userMessage: data }).done(function (data) {
+        $.get("/getResponse", { userMessage: data }).done(function (data) {
           loading.hide();
           var returnedMessage =
             "<p class ='botText'>" + data + "</span></p>";
