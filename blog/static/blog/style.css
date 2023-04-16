@@ -4,9 +4,25 @@
   box-sizing: border-box;
 }
 
-/* .backimg::before {
+.backimg::before {
   content: " ";
-  background-image: url("https://www.theindiaforum.in/sites/default/files/field/image/2022/06/21/ramkumar-radhakrishnan-wikimedia-1622193304-1622193304.jpeg");
+  /* background-image: url("https://www.theindiaforum.in/sites/default/files/field/image/2022/06/21/ramkumar-radhakrishnan-wikimedia-1622193304-1622193304.jpeg"); */
+  /* background-image: linear-gradient(
+    to top,
+    #bfdce5,
+    #95cdee,
+    #7fb8f8,
+    #8a9ef9,
+    #ad7be9
+  ); */
+  background-image: linear-gradient(
+    to top,
+    #bfdce5,
+    #95cdee,
+    #7fb8f8,
+    #8a9ef9,
+    #ad7be9
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -16,7 +32,25 @@
   bottom: 0;
   right: 0;
   opacity: 0.5;
-} */
+}
+
+#loading {
+  position: fixed;
+  left: 50%;
+  top: 53%;
+  z-index: 999;
+
+  display: none;
+
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+#loading img {
+  display: block;
+  margin: 0 auto;
+  height: 8vmax;
+}
 
 .maincontainer {
   display: flex;
@@ -28,9 +62,9 @@
   position: relative;
 }
 
-/* #maindata {
+#maindata {
   opacity: 0;
-} */
+}
 
 .mainheading {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -57,19 +91,36 @@
   margin-right: 0.7vmax;
 }
 
+#maininfo {
+  margin-top: 5vmax;
+  width: 60vmax;
+  position: absolute;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#maininfo h1 {
+  font-family: "PT Serif", serif;
+  color: #4f4557;
+}
+
+#maininfo p {
+  font-size: 2vmax;
+  color: #6d5d6e;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 .managelottie {
   display: flex;
 }
 
-
-
-.mainheading h1 {
+.mainheading h4 {
   margin: 0px;
   font-weight: 600;
-  /* color: linear-gradient(#e66465, #9198e5); */
-  background: -webkit-linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: "PT Serif", serif;
 }
 
 .mainimg {
@@ -90,10 +141,18 @@
 .botbutton {
   padding: 0.2vmax;
   border-radius: 10px;
-  background-color: #3e54ac;
+  background-image: linear-gradient(
+    to top,
+    #bfdce5,
+    #95cdee,
+    #7fb8f8,
+    #8a9ef9,
+    #ad7be9
+  );
   border: none;
   transition: all 0.3s;
-  color: #eeeeee;
+  color: black;
+  
 }
 
 #buttonInput {
@@ -102,32 +161,29 @@
 }
 
 .botbutton:hover {
-  background-color: #ad7be9;
+  color: white;
 }
 
 .leftimage {
   position: fixed;
   left: 1%;
   top: 20%;
-  height:90vmax;
+  height: 90vmax;
 }
-iframe{
+iframe {
   height: 20vmax;
   border: none;
 }
-.midimage{
-  position:fixed;
-  top: 25%;
-  left: 40%;
-} 
 
-.rightimage{
+.rightimage {
   position: fixed;
-  right: 5%;
-  top: 25%;
+  right: 11%;
+  top: 60%;
 }
 
-
+.rightimage img {
+  height: 20vmax;
+}
 
 #userInput {
   display: flex;
@@ -159,9 +215,10 @@ input:focus {
 #buttonInput {
   border-radius: 20px;
   border: none;
-  padding: 0.3vmax;
   background-color: #3e54ac;
   transition: all 0.3s;
+  padding-left: 0.6vmax;
+  padding-right: 0.6vmax;
 }
 
 .chatcontainer {
