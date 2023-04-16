@@ -36,9 +36,7 @@ you can just install them by typing `pip install <package-name>` in your console
 
 ## After Installing just run the command: `python manage.py runserver` then copy the localhost link
 ## Finally the project will be up and running!
-
-<img width="1440" alt="Screenshot 2023-04-16 at 8 35 54 PM" src="https://user-images.githubusercontent.com/32027279/232322532-dd865a4d-0e5b-4531-8f4a-192203b8f37d.png">
-
+<img width="1440" alt="Screenshot 2023-04-16 at 8 35 54 PM" src="https://user-images.githubusercontent.com/32027279/232322942-ffbc0c06-2b8f-47c3-8a07-076ed09f9b4f.png">
 
 
 
