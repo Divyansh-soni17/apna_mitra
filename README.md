@@ -14,6 +14,9 @@ of the way. Try it out today and experience the convenience of
 hassle-free government information access!
 The project has speech to text and text to speech functionalities.
 
+# Youtube link for explaining further
+https://youtu.be/y5iTce1QU3Y
+
 #How to install
 
 ## By PIPENV
@@ -22,15 +25,14 @@ And the by just typing `pipenv install`
 
 ## With out PIPENV
 The libraries installed in this project are:
-##### openai
-##### speechrecognition
-##### pyaudio
-##### pyttsx3
-##### django
-
-##### python-dotenv
-##### gtts
-##### playsound
+##### `openai`
+##### `speechrecognition`
+##### `pyaudio`
+##### `pyttsx3`
+##### `django`
+##### `python-dotenv`
+##### `gtts`
+##### `playsound`
 
 you can just install them by typing `pip install <package-name>` in your console
 
