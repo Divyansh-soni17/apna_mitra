@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('getResponse', views.getResponse, name='getResponse'),
     path('speechtotext', views.speechtotext, name = 'speechtotext'),
-    # path('speaktext', views.SpeakText, name = 'speaktext')
+    path('texttospeech', views.SpeakText, name = 'testtospeech')
 ]
