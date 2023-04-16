@@ -71,8 +71,7 @@
             <div>
               <p class="botText">
                 <span
-                  >Namaste, main apka sahayak, apki kya madat krr skta
-                  hoon.</span
+                  >Namaste, main apki kya sahayata krr skti hoon.</span
                 >
               </p>
             </div>
@@ -110,6 +109,11 @@
     </div>
 
     <script>
+        var i = 1;
+        while(i == 1){
+          $.post("/texttospeech", {Message: "Namaste, main apki kya sahayata krr skti hoon"},function(status){})
+          i = 0;
+        }
       function getUserResponse() {
         var userText = $("#textInput").val();
         var userHTML =
@@ -123,10 +127,9 @@
       $("#buttonInput").click(function () {
         getUserResponse();
       });
-
-      function useMicrophone() {
-        $.get("/blog/speechtotext", function (data) {
-          // alert("data: "+ data.text);
+      
+      function useMicrophone(){
+        $.get("/speechtotext", function(data){
           var data = jQuery.parseJSON(data);
           $("#textInput").val(data);
           if (data.success == "True") {
@@ -138,7 +141,6 @@
             var returnedMessage =
               "<p class ='botText'>" + data.text + "</span></p>";
             $("#chatbot").append(returnedMessage);
-            // speaktext(data.text);
           }
         });
       }
@@ -164,22 +166,21 @@
           isContentVisible = true;
         }
       }
-
+      
       function getbotResponse(data) {
         const loading = $("#loading");
         loading.show();
-
         $.get("/blog/getResponse", { userMessage: data }).done(function (data) {
           loading.hide();
           var returnedMessage =
-            "<p class ='botText'>Chatbot:" + data + "</span></p>";
+            "<p class ='botText'>" + data + "</span></p>";
           $("#chatbot").append(returnedMessage);
-          // speaktext(data);
+          speakbot(data);
         });
       }
-      // function speaktext(data){
-      //   $.post("/blog/speaktext", {Messaage:data})
-      // }
+      function speakbot(data){
+        $.post("/texttospeech", {Message: data},function(status){})
+      }
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
