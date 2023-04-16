@@ -38,7 +38,8 @@ you can just install them by typing `pip install <package-name>` in your console
 
 ## After Installing just run the command: `python manage.py runserver` then copy the localhost link
 ## Finally the project will be up and running!
-<img width="1440" alt="Screenshot 2023-04-16 at 8 35 54 PM" src="https://user-images.githubusercontent.com/32027279/232322942-ffbc0c06-2b8f-47c3-8a07-076ed09f9b4f.png">
+![WhatsApp Image 2023-04-16 at 8 50 36 PM (1)](https://user-images.githubusercontent.com/32027279/232330539-5c3f361d-c5bf-4886-b45b-dd235504e91a.jpeg)
+
 
 
 
