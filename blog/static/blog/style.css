@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.backimg::before {
+/* .backimg::before {
   content: " ";
   background-image: url("https://www.theindiaforum.in/sites/default/files/field/image/2022/06/21/ramkumar-radhakrishnan-wikimedia-1622193304-1622193304.jpeg");
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
   bottom: 0;
   right: 0;
   opacity: 0.5;
-}
+} */
 
 .maincontainer {
   display: flex;
@@ -28,9 +28,9 @@
   position: relative;
 }
 
-#maindata {
+/* #maindata {
   opacity: 0;
-}
+} */
 
 .openchatbot {
   border-radius: 20px;

@@ -37,7 +37,7 @@
         <div class="chatcontainer">
           <div id="chatbot">
             <div>
-              <p class="botText"><span>Hi There</span></p>
+              <p class="botText"><span>Namaste, main apka sahayak, apki kya madat krr skta hoon.</span></p>
             </div>
           </div>
         </div>
@@ -49,6 +49,7 @@
             placeholder="Type your message..."
           />
           <input type="submit" value="Send" id="buttonInput" />
+          <button class = "DesignMic" onclick = "useMicrophone()">Mic</button>
         </div>
       </div>
       <div class="openchatbot">
@@ -56,7 +57,7 @@
           class="fa-duotone fa-message-bot fa-beat fa-sm"
           style="--fa-primary-color: #d3366d; --fa-secondary-color: #6ebc20"
         ></i>
-        <button class="botbutton" onclick="clickme()">Chatbot</button>
+        <button class="botbutton"  onclick="clickme()">Chatbot</button>
       </div>
     </div>
 
@@ -68,21 +69,46 @@
         $("#textInput").val("");
         $("#chatbot").append(userHTML);
 
-        $.get("/blog/getResponse", { userMessage:userText }).done(function(data){
-          var returnedMessage =
-            "<p class ='botText'>Chatbot:" + data + "</span></p>";
-          $("#chatbot").append(returnedMessage);
-        });
+        getbotResponse(userText);
       }
 
       $("#buttonInput").click(function () {
         getUserResponse();
       });
 
-      function clickme() {
-        var myDiv = document.getElementById("maindata");
-        gsap.to(myDiv, { opacity: 1, x: 50, duration: 1.5 });
+      function useMicrophone(){
+        $.get("/blog/speechtotext", function(data){
+          // alert("data: "+ data.text);
+          var data = jQuery.parseJSON(data)
+          $("#textInput").val(data);
+          if(data.success == "True"){
+            var userHTML =
+            "<p class = 'userText'>" + data.text + "</p>";
+            $("#textInput").val("");
+            $("#chatbot").append(userHTML);
+            getbotResponse(data.text);
+          }
+          else {
+            var returnedMessage = "<p class ='botText'>" + data.text + "</span></p>";
+            $("#chatbot").append(returnedMessage);
+            // speaktext(data.text);
+          } 
+
+        });
       }
+
+      function getbotResponse(data){
+        $.get("/blog/getResponse", { userMessage:data }).done(function(data){
+          var returnedMessage =
+            "<p class ='botText'>Chatbot:" + data + "</span></p>";
+          $("#chatbot").append(returnedMessage);
+          // speaktext(data);
+        });
+      }
+      // function speaktext(data){ 
+      //   $.post("/blog/speaktext", {Messaage:data})
+      // }
+
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>

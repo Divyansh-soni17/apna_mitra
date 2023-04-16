@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name = 'index'),
-    path('specific', views.specific, name='specific'),
-    path('getResponse', views.getResponse, name='getResponse')
+    path('getResponse', views.getResponse, name='getResponse'),
+    path('speechtotext', views.speechtotext, name = 'speechtotext'),
+    # path('speaktext', views.SpeakText, name = 'speaktext')
 ]
