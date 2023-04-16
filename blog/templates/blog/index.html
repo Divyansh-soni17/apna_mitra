@@ -22,6 +22,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
+    <!-- Google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"
+      rel="stylesheet"
+    />
+
     <script
       src="https://code.jquery.com/jquery-3.6.4.js"
       integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
@@ -30,14 +38,20 @@
   </head>
   <body>
     <div class="backimg">
-      <div class="leftimage">
-        <img src="../../static/images/indianfarmer.png" alt="image" />
-      </div>
-      <div class="midimage">
-        <iframe src="https://embed.lottiefiles.com/animation/136591"></iframe>
-      </div>
-      <div class="rightimage">
-        <iframe src="https://embed.lottiefiles.com/animation/134344"></iframe>
+      <div id="maininfo">
+        <h1>Apna Mitra</h1>
+        <p>
+          Welcome to Apna Mitra, your friendly government information assistant!
+          Our chatbot is designed to help you access important information about
+          government schemes, job vacancies, and more, quickly and easily. With
+          Apna Mitra, you can get the latest updates on government programs,
+          eligibility criteria, application processes, and other relevant
+          details, all from the comfort of your own device. Whether you're a
+          student looking for scholarships or a job seeker searching for
+          employment opportunities, Apna Mitra is here to guide you every step
+          of the way. Try it out today and experience the convenience of
+          hassle-free government information access!
+        </p>
       </div>
 
       <div class="maincontainer" id="maindata">
@@ -47,7 +61,7 @@
             src="https://static.vecteezy.com/system/resources/previews/006/552/479/original/india-flag-logo-design-template-illustration-free-vector.jpg"
             alt="logoimg"
           />
-          <h1>Apna Mitra</h1>
+          <h4>Apna Mitra</h4>
           <button onclick="toggle()">
             <i class="fa fa-close fa-1x"></i>
           </button>
@@ -74,7 +88,12 @@
           <button value="Send" id="buttonInput">
             <i class="fa fa-paper-plane-o fa-1x"></i>
           </button>
-          <button class="DesignMic" id="buttonInput" onclick="useMicrophone()">Mic</button>
+          <button class="DesignMic" id="buttonInput" onclick="useMicrophone()">
+            <i class="fa fa-microphone fa-1x"></i>
+          </button>
+        </div>
+        <div class="rightimage">
+          <img src="../../static/images/bot2.gif" alt="" />
         </div>
       </div>
     </div>
@@ -83,6 +102,10 @@
       <button class="botbutton" id="myButton" onclick="toggle()">
         <i class="fa fa-commenting-o fa-3x"></i>
       </button>
+    </div>
+
+    <div id="loading">
+      <img src="../../static/images/loading.gif" alt="Loading..." />
     </div>
 
     <script>
@@ -104,24 +127,21 @@
       $("#buttonInput").click(function () {
         getUserResponse();
       });
-
+      
       function useMicrophone(){
         $.get("/speechtotext", function(data){
-          // alert("data: "+ data.text);
-          var data = jQuery.parseJSON(data)
+          var data = jQuery.parseJSON(data);
           $("#textInput").val(data);
-          if(data.success == "True"){
-            var userHTML =
-            "<p class = 'userText'>" + data.text + "</p>";
+          if (data.success == "True") {
+            var userHTML = "<p class = 'userText'>" + data.text + "</p>";
             $("#textInput").val("");
             $("#chatbot").append(userHTML);
             getbotResponse(data.text);
-          }
-          else {
-            var returnedMessage = "<p class ='botText'>" + data.text + "</span></p>";
+          } else {
+            var returnedMessage =
+              "<p class ='botText'>" + data.text + "</span></p>";
             $("#chatbot").append(returnedMessage);
           }
-
         });
       }
       function callFunctionOnEnter(event, getUserResponse) {
@@ -135,17 +155,23 @@
       function toggle() {
         console.log("hello");
         var content = document.getElementById("maindata");
+        var infodata = document.getElementById("maininfo");
         if (isContentVisible) {
-          gsap.to(content, { opacity: 0, y: -50, duration: 1 });
+          gsap.to(infodata, { opacity: 1, x: -50, duration: 1 });
+          gsap.to(content, { opacity: 0, x: 50, duration: 1 });
           isContentVisible = false;
         } else {
-          gsap.to(content, { opacity: 1, y: 50, duration: 1 });
+          gsap.to(infodata,{opacity:0,x:50,duration:1});
+          gsap.to(content, { opacity: 1, x: -50, duration: 1 });
           isContentVisible = true;
         }
       }
-
-      function getbotResponse(data){
-        $.get("/getResponse", { userMessage:data }).done(function(data){
+      
+      function getbotResponse(data) {
+        const loading = $("#loading");
+        loading.show();
+        $.get("/blog/getResponse", { userMessage: data }).done(function (data) {
+          loading.hide();
           var returnedMessage =
             "<p class ='botText'>" + data + "</span></p>";
           $("#chatbot").append(returnedMessage);
