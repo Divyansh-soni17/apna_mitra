@@ -75,7 +75,7 @@
           <button value="Send" id="buttonInput">
             <i class="fa fa-paper-plane-o fa-1x"></i>
           </button>
-          <button class="DesignMic" onclick="useMicrophone()">Mic</button>
+          <button class="DesignMic" id="buttonInput" onclick="useMicrophone()">Mic</button>
         </div>
       </div>
     </div>
@@ -120,6 +120,7 @@
           }
 
         });
+      }
       function callFunctionOnEnter(event, getUserResponse) {
         if (event.keyCode === 13) {
           getUserResponse();

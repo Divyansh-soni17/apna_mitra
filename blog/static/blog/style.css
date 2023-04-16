@@ -98,7 +98,7 @@
 
 #buttonInput {
   color: #eeeeee;
-  margin-left: 2vmax;
+  margin-left: 1vmax;
 }
 
 .botbutton:hover {
@@ -159,7 +159,7 @@ input:focus {
 #buttonInput {
   border-radius: 20px;
   border: none;
-  padding: 0.4vmax;
+  padding: 0.3vmax;
   background-color: #3e54ac;
   transition: all 0.3s;
 }
