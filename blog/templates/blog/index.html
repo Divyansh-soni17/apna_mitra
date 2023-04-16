@@ -19,8 +19,7 @@
 
     <link
       rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
     <script
@@ -31,13 +30,37 @@
   </head>
   <body>
     <div class="backimg">
-      <!-- <iframe src="https://embed.lottiefiles.com/animation/136591"></iframe> -->
+      <div class="leftimage">
+        <img src="../../static/images/indianfarmer.png" alt="image" />
+      </div>
+      <div class="midimage">
+        <iframe src="https://embed.lottiefiles.com/animation/136591"></iframe>
+      </div>
+      <div class="rightimage">
+        <iframe src="https://embed.lottiefiles.com/animation/134344"></iframe>
+      </div>
+
       <div class="maincontainer" id="maindata">
-        <h1>Apna Mitra</h1>
+        <div class="mainheading">
+          <img
+            class="mainimg"
+            src="https://static.vecteezy.com/system/resources/previews/006/552/479/original/india-flag-logo-design-template-illustration-free-vector.jpg"
+            alt="logoimg"
+          />
+          <h1>Apna Mitra</h1>
+          <button onclick="toggle()">
+            <i class="fa fa-close fa-1x"></i>
+          </button>
+        </div>
         <div class="chatcontainer">
           <div id="chatbot">
             <div>
-              <p class="botText"><span>Namaste, main apka sahayak, apki kya madat krr skta hoon.</span></p>
+              <p class="botText">
+                <span
+                  >Namaste, main apka sahayak, apki kya madat krr skta
+                  hoon.</span
+                >
+              </p>
             </div>
           </div>
         </div>
@@ -47,25 +70,27 @@
             id="textInput"
             name="userMessaage"
             placeholder="Type your message..."
+            onkeydown="callFunctionOnEnter(event, getUserResponse)"
           />
-          <input type="submit" value="Send" id="buttonInput" />
-          <button class = "DesignMic" onclick = "useMicrophone()">Mic</button>
+          <button value="Send" id="buttonInput">
+            <i class="fa fa-paper-plane-o fa-1x"></i>
+          </button>
+          <button class="DesignMic" id="buttonInput" onclick="useMicrophone()">Mic</button>
         </div>
       </div>
-      <div class="openchatbot">
-        <i
-          class="fa-duotone fa-message-bot fa-beat fa-sm"
-          style="--fa-primary-color: #d3366d; --fa-secondary-color: #6ebc20"
-        ></i>
-        <button class="botbutton"  onclick="clickme()">Chatbot</button>
-      </div>
+    </div>
+
+    <div class="openchatbot">
+      <button class="botbutton" id="myButton" onclick="toggle()">
+        <i class="fa fa-commenting-o fa-3x"></i>
+      </button>
     </div>
 
     <script>
       function getUserResponse() {
         var userText = $("#textInput").val();
         var userHTML =
-          "<p class = 'userText'>User: <span>" + userText + "</span></p>";
+          "<p class = 'userText'><span>" + userText + "</span></p>";
         $("#textInput").val("");
         $("#chatbot").append(userHTML);
 
@@ -92,9 +117,28 @@
             var returnedMessage = "<p class ='botText'>" + data.text + "</span></p>";
             $("#chatbot").append(returnedMessage);
             // speaktext(data.text);
-          } 
+          }
 
         });
+      }
+      function callFunctionOnEnter(event, getUserResponse) {
+        if (event.keyCode === 13) {
+          getUserResponse();
+        }
+      }
+
+      var isContentVisible = false;
+
+      function toggle() {
+        console.log("hello");
+        var content = document.getElementById("maindata");
+        if (isContentVisible) {
+          gsap.to(content, { opacity: 0, y: -50, duration: 1 });
+          isContentVisible = false;
+        } else {
+          gsap.to(content, { opacity: 1, y: 50, duration: 1 });
+          isContentVisible = true;
+        }
       }
 
       function getbotResponse(data){
@@ -105,10 +149,9 @@
           // speaktext(data);
         });
       }
-      // function speaktext(data){ 
+      // function speaktext(data){
       //   $.post("/blog/speaktext", {Messaage:data})
       // }
-
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
